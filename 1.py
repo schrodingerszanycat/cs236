@@ -21,7 +21,7 @@ def area(arg):
         return l*b
 
 
-arg = int(input("Enter 1 circle, 2 for rectangle"))
+arg = int(input("Enter 1 circle, 2 for rectangle: "))
 print(area(arg))
 
 
