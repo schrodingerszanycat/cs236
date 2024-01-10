@@ -1,15 +1,15 @@
 def max_of_three(a, b, c): 
     if (a > b & a > c):
-        print(a, "is the maximum.")
+        return a
     elif (b > a & b > c):
-        print(b, "is the maximum.")
+        return b
     else:
-        print(c, "is the maximum.")
+        return c
 
 a = int(input("Enter first: "))
 b = int(input("Enter second: "))
 c = int(input("Enter third: "))
-max_of_three(a, b, c)
+print(max_of_three(a, b, c))
 
 def area(l, b):
     return l*b
