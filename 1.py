@@ -11,12 +11,17 @@ b = int(input("Enter second: "))
 c = int(input("Enter third: "))
 print(max_of_three(a, b, c))
 
-def area(l, b):
-    return l*b
+def area(arg):
+    if (arg == 1):
+        r = int(input("Enter radius: "))
+        return r*r
+    elif (arg == 2):
+        l = int(input("Enter length: "))
+        b = int(input("Enter breadth: "))
+        return l*b
 
-l = int(input("Enter length: "))
-b = int(input("Enter breadth: "))
 
-print(area(l, b))
+arg = int(input("Enter 1 circle, 2 for rectangle"))
+print(area(arg))
 
 
