@@ -8,9 +8,9 @@ def findArea():
 def checkOddity():
     number = int(input("Enter number..."))
     if (number % 2 == 0):
-        print(number, " is even")
+        print(number, "is even")
     else: 
-        print(number, " is odd")
+        print(number, "is odd")
 
 def convertTemp():
     print("Enter 0 for Celsius to Fahrenheit conversion, 1 for vice versa")
