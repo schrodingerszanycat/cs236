@@ -8,9 +8,9 @@ def findArea():
 def checkOddity():
     number = int(input("Enter number..."))
     if (number % 2 == 0):
-        print(number " is even")
+        print(number, " is even")
     else: 
-        print(number " is odd")
+        print(number, " is odd")
 
 def convertTemp():
     print("Enter 0 for Celsius to Fahrenheit conversion, 1 for vice versa")
@@ -29,10 +29,10 @@ def convertTemp():
 def runMenu():
     ans = True
     while ans:
-        print("MENU")
-        print("1 - Find the area of a circle given its radius.\n
-              "2 - Check if a given number is even or odd.\n
-              "3 - Convert temperature from Celsius to Fahrenheit and vice versa.")
+        print("\nMENU")
+        print("1 - Find the area of a circle given its radius.")
+        print("2 - Check if a given number is even or odd.")
+        print("3 - Convert temperature from Celsius to Fahrenheit and vice versa.")
         choice = int(input("Enter choice..."))
         match choice:
             case 1:
