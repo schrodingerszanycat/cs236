@@ -33,6 +33,7 @@ def runMenu():
         print("1 - Find the area of a circle given its radius.")
         print("2 - Check if a given number is even or odd.")
         print("3 - Convert temperature from Celsius to Fahrenheit and vice versa.")
+        print("0 - Exit")
         choice = int(input("Enter choice..."))
         match choice:
             case 1:
@@ -42,6 +43,7 @@ def runMenu():
             case 3:
                 convertTemp()
             case 0: 
+                print("Exiting...")
                 ans = False
             case _:
                 print("Invalid choice...")
