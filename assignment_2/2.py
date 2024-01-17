@@ -10,7 +10,7 @@ def countVowels(string):
 
 def isPalindrome(string):
     reversed_string = revStr(string)
-    if (string != reversed_string):
+    if (string.upper() != reversed_string.upper()):
         return False
     return True
 
@@ -26,13 +26,13 @@ def runMenu():
         match choice:
             case 1:
                 string = input("Enter string...")
-                revStr(string)
+                print(revStr(string))
             case 2:
                 string = input("Enter string...")
-                countVowels(string)
+                print(countVowels(string))
             case 3:
                 string = input("Enter string...")
-                isPalindrome(string)
+                print(isPalindrome(string))
             case 0: 
                 print("Exiting...")
                 ans = False
