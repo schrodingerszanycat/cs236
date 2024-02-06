@@ -58,6 +58,7 @@ class Queens:
                 if a == x or b == y or abs(a-x) == abs(b-y):
                     return True
         return False
+    
 
 def main():
     queens = Queens()
