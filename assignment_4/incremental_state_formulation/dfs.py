@@ -35,9 +35,8 @@ class Queens:
          
         while not frontier.empty():
             solution = frontier.pop()
+            self.explored.add(tuple(solution))
             if self.conflict(solution):
-                self.explored.add(tuple(solution))
-                self.num_explored += 1
                 continue
             row = len(solution)
             if row == self.size:
@@ -47,7 +46,10 @@ class Queens:
                 queen = (row, col)
                 queens = solution.copy()
                 queens.append(queen)
-                frontier.add(queens)
+                if (not self.conflict(queens)):
+                    frontier.add(queens)
+                    self.num_explored += 1
+
         return solutions
 
     def conflict(self, solution):
@@ -59,10 +61,28 @@ class Queens:
                     return True
         return False
 
+    def print_board(self, solutions):
+        for i in range(0, len(solutions)):
+            #print("---"*8)
+            for j in range(8):
+                print("---"*8)
+                a, b = solutions[i][j]
+                for k in range(8):
+                    #print("|", end="")
+                    if (j == a and k == b):
+                        print(" Q ", end="")
+                    print("  ", end="")
+                print()
+            print()
+            print()
+
+
 def main():
     queens = Queens()
     solutions = queens.solve_dfs()
     print("Using DFS...")
+    queens.print_board(solutions)
+    # print(solutions)
     print("No.of solutions: ", len(solutions))
     print("No.of states explored: ", queens.num_explored)
     print("No.of states in explored set: ", len(queens.explored))
