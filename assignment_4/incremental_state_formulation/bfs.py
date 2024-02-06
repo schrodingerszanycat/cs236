@@ -61,19 +61,22 @@ class Queens:
         return False
     
     def print_board(self, solutions):
-        for i in range(0, len(solutions)):
-            #print("---"*8)
-            for j in range(8):
-                print("---"*8)
-                a, b = solutions[i][j]
-                for k in range(8):
-                    #print("|", end="")
-                    if (j == a and k == b):
-                        print(" Q ", end="")
-                    print("  ", end="")
+        i = 1
+        for solution in solutions:
+            print("Solution: ", i)
+            i += 1
+            for row in range(8):
+                print("+---" * 8 + "+")
+                print("|", end="")
+                for col in range(8):
+                    if (row, col) in solution:
+                        print(" Q |", end="")
+                    else:
+                        print("   |", end="")
                 print()
-            print()
-            print()
+            
+            print("+---" * 8 + "+")
+            print("\n\n")
     
 
 def main():

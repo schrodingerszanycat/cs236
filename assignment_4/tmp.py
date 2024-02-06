@@ -1,92 +1,28 @@
-""" This is a solution for the 8 Queens problem using Breadth-First Search algorithm (BFS)"""
-
-class QueueFrontier:
-
-    def __init__(self):
-        self.frontier = []
-
-    def add(self, state):
-        self.frontier.append(state)
-
-    def pop(self):
-        if self.empty():
-            raise Exception("empty frontier")
-        else:
-            node = self.frontier[0]
-            self.frontier = self.frontier[1:]
-            return node
-
-    def empty(self):
-        return len(self.frontier) == 0
+# https://www.eecis.udel.edu/~mccoy/courses/cisc4-681.10f/lec-materials/Chapt-6-Constraint-Satisfaction.pdf
 
 
-class Queens:
+def is_valid(row: int, col: int) -> bool:
+    for i in range(row):
+        if board[i] == col or board[i] - i == col - row or board[i] + i == col + row:
+            return False
+    return True
 
-    def __init__(self):
-        self.size = 8
 
-    def solve_bfs(self):
-        solutions = []
-        self.num_explored = 0 
+def backtrack(row: int) -> None:
+    if row == 8:
+        result.append([[1 if i == col else 0 for i in range(8)] for col in board])
+        return
+    for col in range(8):
+        if is_valid(row, col):
+            board[row] = col
+            backtrack(row + 1)
+            board[row] = -1
 
-        frontier = QueueFrontier()
-        frontier.add([])
-        self.explored = set()
-         
-        while not frontier.empty():
-            solution = frontier.pop()
-            self.explored.add(tuple(solution)) # also includes initial state
-            if self.conflict(solution):
-                continue
-            row = len(solution)
-            if row == self.size:
-                solutions.append(solution)
-                continue
-            for col in range(self.size):
-                queen = (row, col)
-                queens = solution.copy()
-                queens.append(queen)
-                if (not self.conflict(queens)):
-                    frontier.add(queens)
-                    self.num_explored += 1
-        return solutions
 
-    def conflict(self, solution):
-        for i in range(1, len(solution)):
-            for j in range(0, i):
-                a, b = solution[i]
-                x, y = solution[j]
-                if a == x or b == y or abs(a-x) == abs(b-y):
-                    return True
-        return False
-    
-    def print_board(self, solutions):
-        for i in range(0, len(solutions)):
-            #print("---"*8)
-            for j in range(8):
-                print("---"*8)
-                a, b = solutions[i][j]
-                for k in range(8):
-                    #print("|", end="")
-                    if (j == a and k == b):
-                        print(" Q ", end="")
-                    print("  ", end="")
-                print()
-            print()
-            print()
-    
-
-def main():
-    queens = Queens()
-    solutions = queens.solve_bfs()
-    print("Using BFS...")
-    queens.print_board(solutions)
-    # print(solutions)
-    print("No.of solutions: ", len(solutions))
-    print("No.of states explored: ", queens.num_explored)
-    print("No.of states in explored set: ", len(queens.explored))
-    
-    
-if __name__ == "__main__":
-    main()
-
+board = [-1] * 8
+result = []
+backtrack(0)
+for matrix in result:
+    for r in matrix:
+        print(r)
+    print()
