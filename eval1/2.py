@@ -64,10 +64,10 @@ def actions(node):
 
     return successors
 
-# def isGoal(node):
-#     return node.state == goal_state
 def isGoal(node):
-    return np.array_equal(node.state, goal_state)
+    return node.state == goal_state
+# def isGoal(node):
+#     return np.array_equal(node.state, goal_state)
 
 
 def find_empty_cell(node):
@@ -116,4 +116,3 @@ def solve_n_puzzle():
     print("Exiting...")
 
 solve_n_puzzle()
-
