@@ -2,7 +2,7 @@ import copy
 
 initial_state = [[3, 8, 1], [6, 2, 5], [4, 7, ' ']]
 goal_state = [[1, 2, 3], [8, 4, ' '], [7, 6, 5]]
-# oal_state = [[3, 8, 1], [4, 6, 2], [' ', 7, 5]]
+#goal_state = [[3, 8, 1], [4, 6, 2], [' ', 7, 5]]
 
 class Node():
     def __init__(self, state, parent):
