@@ -1,8 +1,13 @@
 import copy
+import numpy as np
 
 initial_state = [[3, 8, 1], [6, 2, 5], [4, 7, ' ']]
-goal_state = [[1, 2, 3], [8, 4, ' '], [7, 6, 5]]
-#goal_state = [[3, 8, 1], [4, 6, 2], [' ', 7, 5]]
+goal_state = [[1, 2, 3], [8, 4, ' '], [7, 6, 5]]  #not reachable
+#goal_state = [[3, 8, 1], [4, 6, 2], [' ', 7, 5]] #reachable
+
+# initial_state = [[' ', 1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14, 15], [16, 17, 18, 19, 20, 21, 22, 23], [24, 25, 26, 27, 28, 29, 30, 31], [32, 33, 34, 35, 36, 37, 38, 39], [40, 41, 42, 43, 44, 45, 46, 47], [48, 49, 50, 51, 52, 53, 54, 55], [56, 57, 58, 59, 60, 61, 62, 63]]
+# goal_state = np.transpose(initial_state)
+# goal_state = [[16, 1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14, 15], [' ', 17, 18, 19, 20, 21, 22, 23], [24, 25, 26, 27, 28, 29, 30, 31], [32, 33, 34, 35, 36, 37, 38, 39], [40, 41, 42, 43, 44, 45, 46, 47], [48, 49, 50, 51, 52, 53, 54, 55], [56, 57, 58, 59, 60, 61, 62, 63]]
 
 class Node():
     def __init__(self, state, parent):
@@ -59,8 +64,11 @@ def actions(node):
 
     return successors
 
+# def isGoal(node):
+#     return node.state == goal_state
 def isGoal(node):
-    return node.state == goal_state
+    return np.array_equal(node.state, goal_state)
+
 
 def find_empty_cell(node):
     for i in range(0, 3):
@@ -83,6 +91,7 @@ def print_solution_path(node):
     print("Goal reached!")
 
 def solve_n_puzzle():
+    print("Calculating...")
     explored = set()
     num_explored = 0
     frontier = QueueFrontier()
@@ -101,8 +110,10 @@ def solve_n_puzzle():
             frontier.add(Node(state=successor_state, parent=node))
             explored.add(tuple(map(tuple, successor_state)))
             num_explored += 1
-    print(num_explored, "states explored.")
-    print("Goal state found not reachable from initial state.")
+    print(num_explored, "states explored but goal not found.")
+    print("Conclusion: Goal state found not reachable from initial state.")
+    print("\nNote: Change the goal state to a reachable one to view its solution path.")
+    print("Exiting...")
 
 solve_n_puzzle()
 
