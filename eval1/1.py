@@ -6,8 +6,13 @@ import datetime
 #https://stackoverflow.com/questions/33273512/random-samples-from-a-uniform-distribution-over-0-1
 
 def main():
-    m, n = 3, 3 # should be a square matrix (m == n)
-    p, q = 3, 3 # all dimensions must be equal because we have to multiply their tranpose too
+    # m, n = 3, 3 # should be a square matrix (m == n)
+    # p, q = 3, 3 # all dimensions must be equal because we have to multiply their tranpose too
+
+    m = int(input())
+    n = int(input())
+    p = int(input())
+    q = int(input())
     A = random.normal(0, 1, (m, n))
     B = np.random.uniform(0.0, 1.0, (p, q))
     print("Matrix A")
