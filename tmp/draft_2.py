@@ -2,7 +2,6 @@ import copy
 
 initial_state = [[3, 8, 1], [6, 2, 5], [4, 7, ' ']]
 goal_state = [[1, 2, 3], [8, 4, ' '], [7, 6, 5]]
-# oal_state = [[3, 8, 1], [4, 6, 2], [' ', 7, 5]]
 
 class Node():
     def __init__(self, state, parent):
@@ -75,23 +74,18 @@ def print_solution_path(node):
         path.insert(0, node.state)
         node = node.parent
 
-    print("Here is the solution path: \n")
     for state in path:
-        for i in range(len(state)):
-            print(state[i])
-        print()
+        print(state)
     print("Goal reached!")
 
 def solve_n_puzzle():
     explored = set()
-    num_explored = 0
     frontier = QueueFrontier()
     initial_node = Node(state=initial_state, parent=None)
     frontier.add(initial_node)
     while not frontier.empty():
         node = frontier.pop()
         if isGoal(node):
-            print(num_explored, "states explored.")
             print_solution_path(node)
             return
         successor_states = actions(node)
@@ -100,9 +94,6 @@ def solve_n_puzzle():
                 continue
             frontier.add(Node(state=successor_state, parent=node))
             explored.add(tuple(map(tuple, successor_state)))
-            num_explored += 1
-    print(num_explored, "states explored.")
-    print("Goal state found not reachable from initial state.")
 
 solve_n_puzzle()
 
