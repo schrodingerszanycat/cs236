@@ -66,9 +66,6 @@ def actions(node):
 
 def isGoal(node):
     return node.state == goal_state
-# def isGoal(node):
-#     return np.array_equal(node.state, goal_state)
-
 
 def find_empty_cell(node):
     for i in range(0, 3):
