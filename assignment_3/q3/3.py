@@ -73,8 +73,6 @@ def main():
     filtered_odd_numbers = filter_odd_numbers(random_array)
     print("Original Array:", random_array)
     print("Filtered Odd Numbers:", filtered_odd_numbers)
-    
-
 
 if __name__ == '__main__':
     main()
