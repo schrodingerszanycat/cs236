@@ -1,0 +1,14 @@
+
+    # def run(self, generations=10000):
+    #     for _ in range(generations):
+    #         self.generate_successors()
+    #     best_individual = self.population[np.argmin(self.evaluate_pop())]
+    #     return self.binary_to_decimal(best_individual)
+
+    # def __init__(self, f, pop_size=20, n_variables=10, mutation_rate=0.1):
+    #     self.f = f
+    #     self.pop_size = pop_size
+    #     self.n_variables = n_variables
+    #     self.mutation_rate = mutation_rate
+    #     self.population = self.initialize_pop()
+    #     self.evaluate_pop()
